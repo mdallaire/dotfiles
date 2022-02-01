@@ -1,0 +1,37 @@
+set -gx KUBE_EDITOR nvim
+set -gx VISUAL nvim
+set -gx EDITOR nvim
+set -gx ANSIBLE_HOST_KEY_CHECKING False
+set -gx GPG_TTY (tty)
+
+fish_add_path "{{ .chezmoi.homeDir }}/.krew/bin"
+fish_add_path "{{ .chezmoi.homeDir }}/.local/bin"
+
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+end
+if test -z (pgrep ssh-agent | string collect)
+    eval (ssh-agent -c)
+    set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
+    set -Ux SSH_AGENT_PID $SSH_AGENT_PID
+end
+
+if type -q starship
+    starship init fish | source
+end
+
+if type -q direnv
+    direnv hook fish | source
+end
+
+if type -q flux
+    flux completion fish | source
+end
+
+if type -q helm
+    helm completion fish | source
+end
+
+if type -q cmctl
+    cmctl completion fish | source
+end
