@@ -2,8 +2,10 @@
 
 
 # Archlinux uses go-task
-{{ if eq .chezmoi.osRelease.id "arch" }}
-abbr --add task "go-task"
+{{ if ne .chezmoi.os "android" }}
+    {{ if eq .chezmoi.osRelease.id "arch" }}
+        abbr --add task "go-task"
+    {{ end }}
 {{ end }}
 
 
