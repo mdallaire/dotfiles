@@ -1,0 +1,44 @@
+## Source custom configs
+for file in $__fish_config_dir/custom.d/*.fish
+  source $file
+end
+
+# Linuxbrew
+if test -f /home/linuxbrew/.linuxbrew/bin/brew
+    eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+end
+
+## Add ssh-keys
+eval (ssh-agent -c) >> /dev/null
+ssh-add -q ~/.ssh/id_ecdsa_mdallaire
+ssh-add -q ~/.ssh/id_ed25519_git
+
+## Launch Starship prompt
+if type -q starship
+  starship init fish | source
+end
+
+## Launch The Fuck
+if type -q thefuck
+  thefuck --alias | source
+end
+
+## Launch zoxide
+if type -q zoxide
+  zoxide init fish | source
+end
+
+## Launch direnv
+if type -q direnv
+  direnv hook fish | source
+end
+
+## Enable atuin
+if type -q atuin
+    set -gx ATUIN_NOBIND "true"
+    atuin init fish | source
+    # bind to ctrl-r in normal and insert mode, add any other bindings you want here too
+    bind \cr _atuin_search
+    bind -M insert \cr _atuin_search
+    bind \e\[1\;5A _atuin_search
+end
