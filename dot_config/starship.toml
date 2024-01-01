@@ -1,0 +1,72 @@
+add_newline = true
+
+format= """\
+[╭](dimmed white)$username$directory$aws$azure$kubernetes$terraform$python$git_branch$git_state$git_status$shell$fill($username@$hostname)$fill$cmd_duration$time
+[╰](dimmed white)[](dimmed green)[](green)[](bold green)$character"""
+
+
+[aws]
+format = 'on [$symbol($profile )(\($region\) )]($style)'
+style = 'bold blue'
+symbol = '🅰☁️'
+
+
+[azure]
+disabled = false
+format = '[$symbol($username) | ($subscription)]($style) '
+symbol = 'ﴃ '
+style = 'blue bold'
+[character]
+format = "$symbol"
+success_symbol = "[⮞](green)"
+error_symbol = "[⮞](red)"
+vicmd_symbol = "[⮟](bright purple)"
+disabled = false
+
+[cmd_duration]
+min_time = 500
+
+[directory]
+truncation_length = 5
+truncate_to_repo = false
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+[python]
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+
+[username]
+show_always = false
+
+[kubernetes]
+symbol = '☸ '
+format = '[$symbol$context( \($namespace\))]($style) '
+style = 'green bold'
+disabled = false
+
+[kubernetes.context_aliases]
+"default" = "home-cluster"
+
+[time]
+disabled = false
+format = "[$time]($style) "
+style = "green"
+
+[fill]
+symbol = " "
+
+#[custom.windows]
+#os = "windows"
+#command = "echo "
+#
+#[custom.linux]
+#os = "linux"
+#command = "echo "
+#
+[shell]
+disabled = false
+fish_indicator = "🐟"
+powershell_indicator = "_"
+bash_indicator = ""
