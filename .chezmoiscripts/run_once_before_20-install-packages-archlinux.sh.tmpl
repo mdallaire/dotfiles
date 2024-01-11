@@ -12,6 +12,7 @@ packages=(
   thefuck
   npm
   unzip
+  bitwarden-cli
 )
 
 aur_packages=(
@@ -22,34 +23,6 @@ aur_packages=(
 packages+=(
   wezterm
 )
-{{   end -}}
-
-{{   if .i3wm -}}
-packages+=(
-  i3-gaps
-  i3lock
-  py3status
-  rofi
-  dunst
-  conky
-  xfce4-panel
-)
-{{   end -}}
-
-{{   if .swaywm -}}
-packages+=(
-  sway
-  swayidle
-  waybar
-  dunst
-  python-i3ipc
-)
-
-aur_packages+=(
-  nwg-dock
-  rofi-lbonn-wayland-git
-)
-
 {{   end -}}
 
 echo "updating packages"
