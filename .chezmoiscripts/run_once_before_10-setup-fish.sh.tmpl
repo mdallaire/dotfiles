@@ -7,7 +7,7 @@ echo -e "\0033[0;32m>>>>> Begin Setting Up Fish Shell <<<<<\033[0m"
 # Installing fish
 
 {{   if (eq .chezmoi.os "android") -}}
-  pkg install -y fish
+  pkg install -y which fish
 {{     end -}}
 {{   if (eq .chezmoi.os "linux") -}}
 {{   if (eq .chezmoi.osRelease.id "debian") -}}
