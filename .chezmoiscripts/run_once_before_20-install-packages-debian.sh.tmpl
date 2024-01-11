@@ -1,3 +1,4 @@
+{{   if (eq .chezmoi.os "linux") -}}
 {{ if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "debian")) -}}
 #!{{ lookPath "bash" }}
 
@@ -43,4 +44,5 @@ if [ ! $(command -v wezterm) ] || [ $(wezterm -V | head -n1 | cut -d" " -f2) != 
 fi
 
 echo -e "\033[0;32m>>>>> Finish Setting Up Debian Packages <<<<<\033[0m"
+{{ end -}}
 {{ end -}}

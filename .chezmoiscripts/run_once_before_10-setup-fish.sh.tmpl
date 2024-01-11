@@ -9,7 +9,7 @@ echo -e "\0033[0;32m>>>>> Begin Setting Up Fish Shell <<<<<\033[0m"
 {{   if (eq .chezmoi.os "android") -}}
   pkg install -y fish
 {{     end -}}
-
+{{   if (eq .chezmoi.os "linux") -}}
 {{   if (eq .chezmoi.osRelease.id "debian") -}}
   sudo apt install -y fish
 {{     end -}}
@@ -42,7 +42,7 @@ if [ "$(pacman -Qq fish 2> /dev/null)" != fish ]; then
 {{     end -}}
 fi
 {{   end -}}
-
+{{   end -}}
 # Set fish as default shell
 if [ $SHELL != $(which fish) ]; then
   echo "Changing default shell to fish"
