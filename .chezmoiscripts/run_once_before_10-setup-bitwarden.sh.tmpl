@@ -1,0 +1,27 @@
+{{ if (eq .chezmoi.os "linux" "android") -}}
+#!/bin/bash
+set -eufo pipefail
+
+echo -e "\0033[0;32m>>>>> Begin Setting Up Bitwarden <<<<<\033[0m"
+
+{{ if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "ubuntu" "debian" )) -}}
+
+# renovate: depName=bitwarden/clients datasource=github-tags
+current_bwcli_version=cli-v2024.1.0
+
+if [ ! $(command -v bw) ] || [ $(bw -v | head -n1 | cut -d" " -f3 | sed "s/^/cli-v/") != $current_bwcli_version ]; then
+  echo "installing / upgrading Bitwarden-Cli"
+  curl -s -o /tmp/bwcli.zip https://github.com/bitwarden/clients/releases/download/$current_bwcli_version/bw-linux-$(echo $current_bwcli_version | sed "s/cli-v//").zip && \
+  unzip /tmp/bwcli.zip -d /tmp && \
+  chmod +x /tmp/bw && \
+  mv /tmp/bw ~/.local/bin \
+  rm /tmp/bwcli.zip
+fi
+{{ end -}}
+
+{{   if (eq .chezmoi.os "android") -}}
+if [ ! $(command -v rbw) ]; then
+  echo "Installing rbw"
+  pkg install rbw
+fi
+{{ end -}}
