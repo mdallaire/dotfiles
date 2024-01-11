@@ -1,7 +1,7 @@
 add_newline = true
 
 format= """\
-[╭](dimmed white)$username$directory$aws$azure$kubernetes$terraform$python$git_branch$git_state$git_status$direnv$shell$fill($username@$hostname)$fill$cmd_duration$time
+[╭](dimmed white)$directory$aws$azure$kubernetes$terraform$python$git_branch$git_state$git_status$direnv$shell$fill$os$hostname$username$fill$cmd_duration$time
 [╰](dimmed white)[](dimmed green)[](green)[](bold green)$character"""
 
 
@@ -39,9 +39,15 @@ disabled = true
 format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 
 [username]
-style_root = "red"
-format = "[$user]($style)"
+style_root = "bold red"
+style_user = "bold dimmed green"
+format = '\[[$user]($style)\]'
 show_always = false
+
+[hostname]
+ssh_only = true
+format = '[$ssh_symbol$hostname]($style)'
+style = 'bold dimmed green'
 
 [kubernetes]
 symbol = '☸ '
@@ -51,6 +57,9 @@ disabled = false
 
 [kubernetes.context_aliases]
 "default" = "home-cluster"
+
+[os]
+disabled = true
 
 [time]
 disabled = false
