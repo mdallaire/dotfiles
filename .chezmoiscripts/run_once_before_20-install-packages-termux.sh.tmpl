@@ -1,0 +1,35 @@
+{{ if eq .chezmoi.os  "android" }}
+#!/bin/bash
+
+set -eufo pipefail
+
+echo -e "\033[0;32m>>>>> Begin Setting Up Termux Packages <<<<<\033[0m"
+
+packages=(
+  git
+  thefuck
+  unzip
+  rbw
+  starship
+  sops
+  openssh
+  kubectl
+  fzf
+  direnv
+  bat
+  atuin
+)
+
+echo "updating packages"
+
+pkg upgrade -y
+
+for package in ${packages[@]}; do
+  if [ "$(pkg list-installed $package 2>/dev/null | sed 's/\/.*//' | tail -n1)" != $package ]; then
+    echo "installing $package"
+    pkg install -y $package
+  fi
+done
+
+echo -e "\033[0;32m>>>>> Finish Setting Up Termux Packages <<<<<\033[0m"
+{{ end -}}
