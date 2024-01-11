@@ -5,6 +5,9 @@ set -eufo pipefail
 echo -e "\0033[0;32m>>>>> Begin Setting Up Fish Shell <<<<<\033[0m"
 
 # Installing fish
+{{   if (eq .chezmoi.osRelease.id "debian") -}}
+  sudo apt install -y software-properties-common python3-launchpadlib
+{{     end -}}
 {{   if (eq .chezmoi.osRelease.id "debian" "ubuntu") -}}
 ppa_repo_source=fish-shell/release-3
 if ! $(apt-cache policy | grep http | awk '{print $2}' | sort -u | grep $ppa_repo_source &> /dev/null); then
