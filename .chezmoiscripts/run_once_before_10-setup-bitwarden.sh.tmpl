@@ -15,7 +15,7 @@ if [ ! $(command -v bw) ] || [ $(bw -v | head -n1 | cut -d" " -f3 | sed "s/^/cli
   curl -sSfL -o /tmp/bwcli.zip https://github.com/bitwarden/clients/releases/download/$current_bwcli_version/bw-linux-$(echo $current_bwcli_version | sed "s/cli-v//").zip && \
   unzip /tmp/bwcli.zip -d /tmp && \
   chmod +x /tmp/bw && \
-  mv /tmp/bw {{ .chezmoi.homeDir }}/.local/bin \
+  mv /tmp/bw {{ .chezmoi.homeDir }}/.local/bin &&\
   rm /tmp/bwcli.zip
 fi
 {{ end -}}
