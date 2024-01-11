@@ -20,7 +20,7 @@ on:
 env:
   LOG_LEVEL: debug
   RENOVATE_DRY_RUN: false
-  RENOVATE_CONFIG_FILE: .github/renovate.json
+  RENOVATE_CONFIG_FILE: .github/renovate.json5
   RENOVATE_PLATFORM: github
   RENOVATE_PLATFORM_COMMIT: true
   RENOVATE_ONBOARDING_CONFIG_FILE_NAME: .github/renovate.json5
