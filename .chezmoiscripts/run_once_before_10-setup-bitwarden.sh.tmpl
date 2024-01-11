@@ -1,10 +1,11 @@
-{{ if (and (eq .chezmoi.os "linux" "android") (ne .chezmoi.osRelease.id "arch")) -}}
+{{ if eq .chezmoi.os "linux" "android" -}}
 #!{{ lookPath "bash" }}
 set -eufo pipefail
 
 echo -e "\0033[0;32m>>>>> Begin Setting Up Bitwarden <<<<<\033[0m"
 
-{{ if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "ubuntu" "debian" )) -}}
+{{ if eq .chezmoi.os "linux" -}}
+{{ if eq .chezmoi.osRelease.id "ubuntu" "debian" -}}
 
 # renovate: depName=bitwarden/clients datasource=github-tags
 current_bwcli_version=cli-v2024.1.0
@@ -17,6 +18,7 @@ if [ ! $(command -v bw) ] || [ $(bw -v | head -n1 | cut -d" " -f3 | sed "s/^/cli
   mv /tmp/bw ~/.local/bin \
   rm /tmp/bwcli.zip
 fi
+{{ end -}}
 {{ end -}}
 
 {{   if (eq .chezmoi.os "android") -}}
