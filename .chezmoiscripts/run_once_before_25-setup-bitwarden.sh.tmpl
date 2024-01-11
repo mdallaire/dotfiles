@@ -1,7 +1,7 @@
 {{ if eq .chezmoi.os "linux" "android" -}}
 #!{{ lookPath "bash" }}
 set -eufo pipefail
-PATH={{ .chezmoi.homeDir }}/.local/bin:$PATH
+export PATH={{ .chezmoi.homeDir }}/.local/bin:$PATH
 echo -e "\0033[0;32m>>>>> Begin Setting Up Bitwarden <<<<<\033[0m"
 
 {{ if eq .chezmoi.os "linux" -}}
