@@ -12,7 +12,7 @@ current_bwcli_version=cli-v2024.1.0
 
 if [ ! $(command -v bw) ] || [ $(bw -v | head -n1 | cut -d" " -f3 | sed "s/^/cli-v/") != $current_bwcli_version ]; then
   echo "installing / upgrading Bitwarden-Cli"
-  curl -s -o /tmp/bwcli.zip https://github.com/bitwarden/clients/releases/download/$current_bwcli_version/bw-linux-$(echo $current_bwcli_version | sed "s/cli-v//").zip && \
+  curl -sSfL -o /tmp/bwcli.zip https://github.com/bitwarden/clients/releases/download/$current_bwcli_version/bw-linux-$(echo $current_bwcli_version | sed "s/cli-v//").zip && \
   unzip /tmp/bwcli.zip -d /tmp && \
   chmod +x /tmp/bw && \
   mv /tmp/bw ~/.local/bin \

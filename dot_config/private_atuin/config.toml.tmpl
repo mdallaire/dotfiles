@@ -1,6 +1,6 @@
 {{ if eq .chezmoi.os  "android" -}}
 sync_address = '{{ (rbwFields "chezmoi").atuin_server.value }}'
 {{ else if eq .chezmoi.os "linux" -}}
-sync_address = '{{ (bitwardenFields "chezmoi").atuin_server.value }}'
+sync_address = '{{ (bitwardenFields "item" "chezmoi").atuin_server.value }}'
 {{ end }}
 enter_accept = false
