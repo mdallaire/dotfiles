@@ -2,7 +2,7 @@
 #!{{ lookPath "bash" }}
 
 set -eufo pipefail
-
+echo -e "\0033[0;32m>>>>> Begin Setting Up Fonts <<<<<\033[0m"
 {{ if .termux -}}
  pkg install -y nerdfix
 {{ end -}}
