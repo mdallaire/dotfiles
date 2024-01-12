@@ -1,4 +1,4 @@
-{{ if eq .chezmoi.os  "android" -}}
+{{ if .termux -}}
 #!{{ lookPath "bash" }}
 
 set -eufo pipefail
@@ -6,17 +6,12 @@ set -eufo pipefail
 echo -e "\033[0;32m>>>>> Begin Setting Up Termux Packages <<<<<\033[0m"
 
 packages=(
+  proot
   git
   unzip
-  rbw
-  starship
-  sops
   openssh
-  kubectl
-  fzf
-  direnv
-  bat
-  atuin
+  jq
+  yq
 )
 
 echo "updating packages"

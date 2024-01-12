@@ -1,7 +1,7 @@
-{{ if eq .chezmoi.os  "android" -}}
-# rbw is broken on termux
-# sync_address = atuin.FILLME
-{{ else if eq .chezmoi.os "linux" -}}
+{{ if .termux -}}
+{{- /* rbw is broken on termux */-}}
+sync_address = atuin.FILLME
+{{ else if (and (eq .chezmoi.os "linux") (not .termux)) -}}
 sync_address = '{{ (bitwardenFields "item" "chezmoi").atuin_server.value }}'
 {{ end }}
 enter_accept = false

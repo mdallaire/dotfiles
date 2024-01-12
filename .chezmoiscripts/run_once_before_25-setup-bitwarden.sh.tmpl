@@ -1,4 +1,4 @@
-{{ if eq .chezmoi.os "linux" "android" -}}
+{{ if (or (eq .chezmoi.os "linux") .termux -}}
 #!{{ lookPath "bash" }}
 set -eufo pipefail
 export PATH={{ .chezmoi.homeDir }}/.local/bin:$PATH
@@ -22,7 +22,7 @@ fi
 {{ end -}}
 {{ end -}}
 
-{{   if (eq .chezmoi.os "android") -}}
+{{   if .termux -}}
 if [ ! $(command -v rbw) ]; then
   echo "Installing rbw"
   pkg install rbw

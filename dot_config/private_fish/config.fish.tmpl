@@ -1,3 +1,9 @@
+
+{{ if .termux }}
+## Enter termux-chroot
+termux-chroot
+{{ end }}
+
 ## Source custom configs
 for file in $__fish_config_dir/custom.d/*.fish
   source $file
@@ -9,7 +15,7 @@ if test -f /home/linuxbrew/.linuxbrew/bin/brew
 end
 
 ## Add ssh-keys
-{{ if ne .chezmoi.os "android" }}
+{{ if not .termux }}
 eval (ssh-agent -c) >> /dev/null
 ssh-add -q ~/.ssh/id_ecdsa_mdallaire
 ssh-add -q ~/.ssh/id_ed25519_git
@@ -46,3 +52,5 @@ if type -q atuin
     bind -M insert \cr _atuin_search
     bind \e\[1\;5A _atuin_search
 end
+
+

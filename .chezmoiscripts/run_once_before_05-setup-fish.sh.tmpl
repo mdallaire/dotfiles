@@ -1,4 +1,4 @@
-{{ if (eq .chezmoi.os "linux" "android") -}}
+{{ if (or (eq .chezmoi.os "linux") .termux)) -}}
 #!{{ lookPath "bash" }}
 set -eufo pipefail
 
@@ -6,7 +6,7 @@ echo -e "\0033[0;32m>>>>> Begin Setting Up Fish Shell <<<<<\033[0m"
 
 # Installing fish
 
-{{   if (eq .chezmoi.os "android") -}}
+{{   if .termux -}}
   pkg install -y which fish
 {{     end -}}
 {{   if (eq .chezmoi.os "linux") -}}

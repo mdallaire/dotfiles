@@ -5,13 +5,16 @@
 {{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
 {{- $kubernetes := false -}}{{/* true if this machine is used for Kubernetes work */}}
 {{- $agekey := false -}}{{/* true if this machine has agekey to decrypt secret */}}
+{{- $termux := false -}}{{/* true if this machine is a termux app running on android */}}
 
 {{- $hostname := .chezmoi.hostname -}}
 {{- if eq $hostname "md-nuc" -}}
 {{-   $headless = false -}}
 {{-   $kubernetes = true -}}
 {{-   $agekey = true -}}
+{{-   $termux = false -}}
 {{- end -}}
+
 {{- if hasKey . "headless" -}}
 {{-   $headless = .headless -}}
 {{- else if $interactive -}}
@@ -27,6 +30,11 @@
 {{- else if $interactive -}}
 {{-   $agekey = promptBool "agekey" -}}
 {{- end -}}
+{{- if hasKey . "termux" -}}
+{{-   $termux = .termux -}}
+{{- else if (or (eq .chezmoi.os "android") (eq .chezmoi.cacheDir "/home/.cache/chezmoi")) -}}
+{{-   $termux = true -}}
+{{- end -}}
 
 {{- if $interactive -}}
 {{-   writeToStdout "💡 Tip: you can re-enter your data with `chezmoi init --data=false`.\n" -}}
@@ -36,6 +44,8 @@ data:
   headless: {{ $headless }}
   kubernetes: {{ $kubernetes }}
   agekey: {{ $agekey }}
+  termux: {{ $termux }}
+
 format: yaml
 encryption: age
 {{- if $agekey }}
@@ -54,8 +64,8 @@ git:
   autoAdd: true
 
 scriptEnv:
-{{ if eq .chezmoi.os "linux" -}}
+{{ if (and (eq .chezmoi.os "linux") (or (ne .chezmoi.os "android") (ne .chezmoi.cacheDir "/home/.cache/chezmoi"))) -}}
   PATH: "{{ .chezmoi.homeDir }}/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-{{ else if eq .chezmoi.os "android" -}}
+{{ else if (or (eq .chezmoi.os "android") (eq .chezmoi.cacheDir "/home/.cache/chezmoi")) -}}
   PATH: "{{ .chezmoi.homeDir }}/.local/bin:/data/data/com.termux/files/usr/bin"
 {{ end -}}
