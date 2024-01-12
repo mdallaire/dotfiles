@@ -3,6 +3,9 @@
 
 set -eufo pipefail
 
+{{ if .termux -}}
+ pkg install -y nerdfix
+{{ end -}}
 # List of Nerd Fonts font to install
 nerdfonts_fonts=(UbuntuMono Hack FiraCode FiraMono Noto)
 # List of urls to download font, supported files can be .ttf or .zip

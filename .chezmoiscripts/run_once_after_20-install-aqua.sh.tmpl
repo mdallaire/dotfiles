@@ -3,12 +3,6 @@
 
 set -eufo pipefail
 
-{{ if .termux -}}
-if [ $(chezmoi data -f json | jq '.chezmoi.cacheDir') != "/home/.cache/chezmoi" ]; then
-  termux-chroot
-fi
-{{ end -}}
-
 # renovate: depName=aquaproj/aqua datasource=github-releases
 current_aqua_version=v2.21.3
 
