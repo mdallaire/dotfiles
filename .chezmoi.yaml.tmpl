@@ -54,4 +54,8 @@ git:
   autoAdd: true
 
 scriptEnv:
+{{ if eq .chezmoi.os "linux" -}}
   PATH: "{{ .chezmoi.homeDir }}/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+{{ else if eq .chezmoi.os "android" -}}
+  PATH: "{{ .chezmoi.homeDir }}/.local/bin:/data/data/com.termux/files/usr/bin"
+{{ end -}}
