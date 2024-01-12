@@ -1,4 +1,4 @@
-{{ if (or (eq .chezmoi.os "linux") .termux -}}
+{{ if (or (eq .chezmoi.os "linux") .termux ) -}}
 #!{{ lookPath "bash" }}
 set -eufo pipefail
 export PATH={{ .chezmoi.homeDir }}/.local/bin:$PATH
