@@ -21,7 +21,7 @@ if ! $(dpkg-query -W -f='installed' software-properties-common &> /dev/null); th
 {{ if ne .chezmoi.username "root" -}}
     sudo apt install -y software-properties-common
 {{ else -}}
-    apt install -y software-properties-common}
+    apt install -y software-properties-common
 {{ end -}}
 fi
 if ! $(apt-cache policy | grep http | awk '{print $2}' | sort -u | grep $ppa_repo_source &> /dev/null); then
