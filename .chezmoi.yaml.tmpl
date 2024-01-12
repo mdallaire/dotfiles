@@ -52,3 +52,6 @@ merge:
     - "{{ "{{ .Target }}" }}"
 git:
   autoAdd: true
+
+scriptEnv:
+  PATH: {{ .chezmoi.homeDir }}/.local/bin:$PATH

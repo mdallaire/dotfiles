@@ -15,6 +15,14 @@ echo -e "\0033[0;32m>>>>> Begin Setting Up Fish Shell <<<<<\033[0m"
 {{     end -}}
 {{   if (eq .chezmoi.osRelease.id "ubuntu") -}}
 ppa_repo_source=fish-shell/release-3
+if ! $(dpkg-query -W -f='installed' $package &> /dev/null); then
+    echo "installing $package"
+{{ if ne .chezmoi.username "root" -}}
+    sudo apt install -y $package
+{{ else -}}
+    apt install -y ${packages[@]}
+{{ end -}}
+fi
 if ! $(apt-cache policy | grep http | awk '{print $2}' | sort -u | grep $ppa_repo_source &> /dev/null); then
   echo "adding ppa:$ppa_repo_source repository to apt"
 {{     if ne .chezmoi.username "root" -}}
