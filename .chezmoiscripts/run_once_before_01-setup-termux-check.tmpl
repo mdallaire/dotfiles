@@ -1,7 +1,7 @@
 {{ if .termux -}}
 #!{{ lookPath "bash" }}
 set -eufo pipefail
-if [ $(chezmoi data -f json | jq '.chezmoi.cacheDir') != "/home/.cache/chezmoi" ]; then
+if [ $(chezmoi data -f json | jq '.chezmoi.cacheDir') != '"/home/.cache/chezmoi"' ]; then
   echo -e "\0033[1;31m>>>>> You are not in Termux Chroot <<<<<\033[0m"
   echo -e "\0033[1;31m>> Run termux-chroot then run chezmoi init again before applying\033[0m"
   exit 1
