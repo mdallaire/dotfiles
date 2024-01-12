@@ -16,12 +16,12 @@ echo -e "\0033[0;32m>>>>> Begin Setting Up Fish Shell <<<<<\033[0m"
 {{   if (eq .chezmoi.osRelease.id "ubuntu") -}}
 ppa_repo_source=fish-shell/release-3
 
-if ! $(dpkg-query -W -f='installed' add-apt-repository &> /dev/null); then
-    echo "installing add-apt-repositoryp"
+if ! $(dpkg-query -W -f='installed' software-properties-common &> /dev/null); then
+    echo "installing software-properties-common"
 {{ if ne .chezmoi.username "root" -}}
-    sudo apt install -y add-apt-repository
+    sudo apt install -y software-properties-common
 {{ else -}}
-    apt install -y add-apt-repository}
+    apt install -y software-properties-common}
 {{ end -}}
 fi
 if ! $(apt-cache policy | grep http | awk '{print $2}' | sort -u | grep $ppa_repo_source &> /dev/null); then
