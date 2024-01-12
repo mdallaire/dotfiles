@@ -1,14 +1,3 @@
-
-
-
-# Archlinux uses go-task
-{{ if ne .chezmoi.os "android" }}
-    {{ if eq .chezmoi.osRelease.id "arch" }}
-        abbr --add task "go-task"
-    {{ end }}
-{{ end }}
-
-
 # Kubens alias
 if type -q kubens
     abbr --add kcn "kubens"
