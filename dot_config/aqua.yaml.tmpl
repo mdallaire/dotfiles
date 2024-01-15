@@ -1,4 +1,4 @@
-{{ if (or (eq .chezmoi.os "linux") .termux) -}}
+{{ if (and (eq .chezmoi.os "linux") (not .termux) -}}
 registries:
   - type: standard
     ref: v4.117.0    # renovate: depName=aquaproj/aqua-registry
