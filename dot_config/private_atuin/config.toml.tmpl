@@ -2,7 +2,7 @@
 {{ if .termux -}}
 {{/* rbw is broken on termux */}}
 sync_address = 'https://atuin.FILLME'
-{{ else if (and (eq .chezmoi.os "linux") (not .termux) -}}
+{{ else if (and (eq .chezmoi.os "linux") (not .termux)) -}}
 sync_address = '{{ (bitwardenFields "item" "chezmoi").atuin_server.value }}'
 {{ end }}
 enter_accept = false
