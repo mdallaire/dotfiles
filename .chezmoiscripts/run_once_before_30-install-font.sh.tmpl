@@ -65,7 +65,7 @@ if [ $updated_counter -gt 0 ]; then
 fi
 {{ end -}}
 {{ if .termux }}
-ln -s $font_dir/FiraCode/FiraCodeNerdFontMono-Regular.ttf {{ .chezmoi.homeDir }}/.termux/font.ttf
+ln -sf $font_dir/FiraCode/FiraCodeNerdFontMono-Regular.ttf {{ .chezmoi.homeDir }}/.termux/font.ttf
 termux-reload-settings
 {{ end -}}
 echo -e "\033[0;32m>>>>> Finish Setting Up Font <<<<<\033[0m"
