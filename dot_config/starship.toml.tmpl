@@ -1,5 +1,9 @@
 add_newline = true
 
+{{ if .termux -}}
+command_timeout = 5000
+{{- end }}
+
 format= """\
 [╭](dimmed white)$directory$aws$azure$kubernetes$terraform$python$git_branch$git_state$git_status$direnv$shell$fill$os$hostname$username$fill$cmd_duration$time
 [╰](dimmed white)[](dimmed green)[](green)[](bold green)$character"""
