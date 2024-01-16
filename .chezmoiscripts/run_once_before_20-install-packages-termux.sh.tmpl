@@ -47,8 +47,7 @@ current_kubens_version=v0.9.5
 
 if [ ! $(command -v kubens) ] || [ $(kubens -V | head -n1 | cut -d" " -f3 | sed "s/^/v/") != $current_kubens_version ]; then
   echo "installing / upgrading Kubens"
-  curl -sSfL https://github.com/ahmetb/kubectx/releases/download/$current_kubens_version/kubens_$(echo $current_kubens_version | \
-  tar xf - -C {{ .chezmoi.homeDir }}/.local/bin kubens && \
+  curl -sSfL https://github.com/ahmetb/kubectx/releases/download/$current_kubens_version/kubens_$(echo $current_kubens_version | tar xf - -C {{ .chezmoi.homeDir }}/.local/bin kubens
   chmod +x {{ .chezmoi.homeDir }}/.local/bin/kubens
 fi
 
@@ -59,7 +58,7 @@ current_talosctl_version=v1.6.1
 
 if [ ! $(command -v talosctl) ] || [ $(talosctl version --short --client | tail -n1 | cut -d " " -f2) != $current_talosctl_version ]; then
   echo "installing / upgrading Talosctl"
-  curl -sSfL -o {{ .chezmoi.homeDir }}/.local/bin/talosctl https://github.com/siderolabs/talos/releases/download/$current_talosctl_version/talosctl-linux-arm64 && \
+  curl -sSfL -o {{ .chezmoi.homeDir }}/.local/bin/talosctl https://github.com/siderolabs/talos/releases/download/$current_talosctl_version/talosctl-linux-arm64
   chmod +x {{ .chezmoi.homeDir }}/.local/bin/talosctl
 fi
 
