@@ -1,4 +1,4 @@
-{{ if (and (eq .chezmoi.os "linux") (not .headless) (ne .chezmoi.username "root")) -}}
+{{ if (or (and (eq .chezmoi.os "linux") (not .headless) (ne .chezmoi.username "root")) .termux) -}}
 #!{{ lookPath "bash" }}
 
 set -eufo pipefail
@@ -62,5 +62,9 @@ if [ $updated_counter -gt 0 ]; then
   echo "refreshing font cache"
   fc-cache -vf "$font_dir"
 fi
+
+{{ if .termux }}
+#ln -sf $font_dir/FiraMonp/Ubuntu\ Mono\ Nerd\ Font\ Complete.ttf $PREFIX/share/termux/fonts/UbuntuMono.ttf
+{{ end -}}
 echo -e "\033[0;32m>>>>> Finish Setting Up Font <<<<<\033[0m"
 {{ end -}}
