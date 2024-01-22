@@ -26,6 +26,10 @@ if type -q talosctl
     talosctl completion fish | source
 end
 
+if type -q talhelper
+    talhelper completion fish | source
+end
+
 if type -q kubens
     function __fish_kubens_arg_number -a number
         set -l cmd (commandline -opc)
