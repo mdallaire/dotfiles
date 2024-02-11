@@ -1,0 +1,28 @@
+{{ if (eq .chezmoi.os "windows") -}}
+
+
+# Packages to install
+$packages = @(
+    "Bitwarden.Bitwarden",
+    "7zip.7zip",
+    "Git.Git",
+    "Greenshot.Greenshot",
+    "Logseq.Logseq",
+    "Notepad++.Notepad++",
+    "Microsoft.VisualStudioCode"
+)
+
+# Function to install packages using winget
+function Install-WinGetPackages {
+    param (
+        [string[]]$packages
+    )
+
+    foreach ($package in $packages) {
+        Write-Host "Installing package: $package"
+        winget install $package
+    }
+}
+
+# Call the function to install packages
+Install-WinGetPackages -packages $packages

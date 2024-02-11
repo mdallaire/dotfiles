@@ -1,0 +1,11 @@
+{{ if eq .chezmoi.os "windows" -}}
+
+winget install aquaproj.aqua
+
+Set-Item Env:AQUA_GLOBAL_CONFIG "$HOME\.config\aqua.yaml"
+
+# This script will run whenever there is a change to .config/aqua.yaml
+# .config/aqua.yaml hash: {{ include "dot_config/aqua.yaml.tmpl" | sha256sum }}
+aqua install -a
+
+{{ end -}}
