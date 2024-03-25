@@ -10,9 +10,7 @@ end
 
 ## Add ssh-keys
 # {{ if not .termux }}
-# eval (ssh-agent -c) >> /dev/null
-# ssh-add -q ~/.ssh/id_ecdsa_mdallaire
-# ssh-add -q ~/.ssh/id_ed25519_git
+eval (ssh-agent -c) >> /dev/null
 # {{ end }}
 
 
