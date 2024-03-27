@@ -8,13 +8,6 @@ if test -f /home/linuxbrew/.linuxbrew/bin/brew
     eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 end
 
-## Start ssh-agent
-#if not set -q SSH_AGENT_PID
-#  eval (ssh-agent -c) >> /dev/null
-#end
-
-
-
 ## Launch Starship prompt
 if type -q starship
   starship init fish | source

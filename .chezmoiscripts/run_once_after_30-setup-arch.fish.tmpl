@@ -1,0 +1,9 @@
+{{ if (eq .chezmoi.os "linux") -}}
+{{ if (eq .chezmoi.osRelease.id "arch") -}}
+#!{{ lookPath "bash" }}
+
+# Enable ssh-agent service
+systemctl --user enable ssh-agent.service
+
+{{ end -}}
+{{ end -}}
