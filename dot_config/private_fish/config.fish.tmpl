@@ -8,10 +8,10 @@ if test -f /home/linuxbrew/.linuxbrew/bin/brew
     eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 end
 
-## Add ssh-keys
-# {{ if not .termux }}
-eval (ssh-agent -c) >> /dev/null
-# {{ end }}
+## Start ssh-agent
+#if not set -q SSH_AGENT_PID
+#  eval (ssh-agent -c) >> /dev/null
+#end
 
 
 
