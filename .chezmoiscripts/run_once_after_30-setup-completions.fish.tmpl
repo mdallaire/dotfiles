@@ -1,3 +1,4 @@
+{{ if (ne .chezmoi.os "windows") -}}
 #!{{ lookPath "fish" }}
 
 echo -e "\033[0;32m>>>>> Begin Setting Up Fish Completions <<<<<\033[0m"
@@ -75,3 +76,4 @@ if type -q atuin
 end
 
 echo -e "\033[0;32m>>>>> Finish Setting Fish Completions <<<<<\033[0m"
+{{ end -}}
