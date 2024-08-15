@@ -1,4 +1,4 @@
-{{ if (or (eq .chezmoi.os "linux") (not .headless) .termux ) -}}
+{{ if (or (and (eq .chezmoi.os "linux") (not .headless)) .termux ) -}}
 #!{{ lookPath "bash" }}
 set -eufo pipefail
 
