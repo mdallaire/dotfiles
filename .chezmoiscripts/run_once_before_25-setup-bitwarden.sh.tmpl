@@ -24,7 +24,7 @@ fi
 {{   if .termux -}}
 if [ ! $(command -v rbw) ]; then
   echo "Installing rbw"
-  pkg install rbw
+  pkg install rbw -y
 fi
 {{ end -}}
 echo -e "\0033[0;32m>>>>> Finished Setting Up Bitwarden <<<<<\033[0m"
