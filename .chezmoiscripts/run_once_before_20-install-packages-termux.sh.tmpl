@@ -37,7 +37,14 @@ for package in ${packages[@]}; do
   fi
 done
 
+
+
 # Install packages not available from termux repositories
+
+## Check and create bin folder if not present
+if [ ! -d {{ .chezmoi.homeDir }}/.local/bin ]; then
+  mkdir -p {{ .chezmoi.homeDir }}/.local/bin
+fi
 export PATH={{ .chezmoi.homeDir }}/.local/bin:$PATH
 
 # kubens
@@ -47,7 +54,7 @@ current_kubens_version=v0.9.5
 
 if [ ! $(command -v kubens) ] || [ $(kubens -V | head -n1 | cut -d" " -f3 | sed "s/^/v/") != $current_kubens_version ]; then
   echo "installing / upgrading Kubens"
-  curl -sSfL https://github.com/ahmetb/kubectx/releases/download/$current_kubens_version/kubens_$(echo $current_kubens_version)_linux_arm64.tar.gz | tar xf - -C {{ .chezmoi.homeDir }}/.local/bin kubens
+  curl -sSfL https://github.com/ahmetb/kubectx/releases/download/$current_kubens_version/kubens_$(echo $current_kubens_version)_linux_arm64.tar.gz | tar xzf - -C {{ .chezmoi.homeDir }}/.local/bin kubens
   chmod +x {{ .chezmoi.homeDir }}/.local/bin/kubens
 fi
 
