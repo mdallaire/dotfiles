@@ -17,3 +17,4 @@ if ($Profile.CurrentUserAllHosts -ne (Convert-Path profile.ps1)) {
     Copy-Item profile.ps1 $Profile.CurrentUserAllHosts
     Copy-Item powershell.config.json -Destination "$Env:OneDriveCommercial\Documents\PowerShell\powershell.config.json"
 }
+{{ end -}}
