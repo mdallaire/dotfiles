@@ -1,3 +1,5 @@
+{{ if (eq .chezmoi.os "windows") -}}
+
 #!/usr/bin/env pwsh
 # profile hash: {{ include "profile.ps1" | sha256sum }}
 $ErrorView = 'DetailedView'
