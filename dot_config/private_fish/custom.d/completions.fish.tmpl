@@ -1,13 +1,17 @@
-if type -q flux
-    flux completion fish | source
-end
-
-if type -q helm
-    helm completion fish | source
+if type -q cilium
+    cilium completion fish | source
 end
 
 if type -q cmctl
     cmctl completion fish | source
+end
+
+if type -q flux
+    flux completion fish | source
+end
+
+if type -q flyctl
+    flyctl completion fish | source
 end
 
 if type -q kubectl-cnpg
@@ -16,18 +20,6 @@ end
 
 if type -q kubectl
     kubectl completion fish | source
-end
-
-if type -q cilium
-    cilium completion fish | source
-end
-
-if type -q talosctl
-    talosctl completion fish | source
-end
-
-if type -q talhelper
-    talhelper completion fish | source
 end
 
 if type -q kubens
@@ -42,3 +34,16 @@ if type -q kubens
     complete -f -x -c kubens -n '__fish_kubens_arg_number 1' -s c -l current -d "show the current namespace"
     complete -f -x -c kubens -n '__fish_kubens_arg_number 1' -s h -l help -d "show the help message"
 end
+
+if type -q helm
+    helm completion fish | source
+end
+
+if type -q talhelper
+    talhelper completion fish | source
+end
+
+if type -q talosctl
+    talosctl completion fish | source
+end
+
