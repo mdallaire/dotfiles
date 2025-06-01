@@ -1,8 +1,8 @@
 {
     "extends": [
       "config:base",
-      "github>aquaproj/aqua-renovate-config:installer-script#2.8.0(.chezmoiscripts/.*install-aqua\\.sh\\.tmpl)",
-      "github>aquaproj/aqua-renovate-config:file#2.8.0(dot_config/aqua\\.yaml\\.tmpl)",
+      "github>aquaproj/aqua-renovate-config:installer-script#2.8.1(.chezmoiscripts/.*install-aqua\\.sh\\.tmpl)",
+      "github>aquaproj/aqua-renovate-config:file#2.8.1(dot_config/aqua\\.yaml\\.tmpl)",
       // "github>aquaproj/aqua-renovate-config:golang-go#2.7.5(dot_config/aqua\\.yaml\\.tmpl)"
     ],
     "automerge": true,
