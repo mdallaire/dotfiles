@@ -63,7 +63,7 @@ fi
 # talosctl
 
 # renovate: depName=siderolabs/talos datasource=github-tags
-current_talosctl_version=v1.10.3
+current_talosctl_version=v1.10.4
 
 if [ ! $(command -v talosctl) ] || [ $(talosctl version --short --client | tail -n1 | cut -d " " -f2) != $current_talosctl_version ]; then
   echo "installing / upgrading Talosctl"
