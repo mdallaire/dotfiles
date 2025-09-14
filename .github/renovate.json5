@@ -1,8 +1,8 @@
 {
   extends: [
     'config:recommended',
-    'github>aquaproj/aqua-renovate-config:installer-script#2.8.2(.chezmoiscripts/.*install-aqua\\.sh\\.tmpl)',
-    'github>aquaproj/aqua-renovate-config:file#2.8.2(dot_config/aqua\\.yaml\\.tmpl)',
+    'github>aquaproj/aqua-renovate-config:installer-script#2.9.0(.chezmoiscripts/.*install-aqua\\.sh\\.tmpl)',
+    'github>aquaproj/aqua-renovate-config:file#2.9.0(dot_config/aqua\\.yaml\\.tmpl)',
   ],
   automerge: true,
   ignoreTests: true,
