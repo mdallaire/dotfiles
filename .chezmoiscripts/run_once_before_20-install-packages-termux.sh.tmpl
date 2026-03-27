@@ -52,7 +52,7 @@ export PATH={{ .chezmoi.homeDir }}/.local/bin:$PATH
 # kubens
 
 # renovate: depName=ahmetb/kubectx datasource=github-tags
-current_kubens_version=v0.10.2
+current_kubens_version=v0.11.0
 
 if [ ! $(command -v kubens) ] || [ $(kubens -V | head -n1 | cut -d" " -f3 | sed "s/^/v/") != $current_kubens_version ]; then
   echo "installing / upgrading Kubens"
